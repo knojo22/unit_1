@@ -118,7 +118,7 @@ function debugCallback(mydata){
 function jQueryAjax(){
 // Defining a variable to hold the data
 	var mydata;
-// Using the basic jQuery AJAX method to
+// Using the basic jQuery AJAX method
 	$.ajax("data/MegaCities.geojson", {
 		dataType: "json",
 		success: function(mydata){
