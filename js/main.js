@@ -1,6 +1,7 @@
 //Initializing the function called when the script loads
 function initialize(){
 	cities();
+	jQueryAjax();
 };
 
 //Defining a function to create a table with cities and their populations
@@ -106,5 +107,31 @@ B values and concatenates them */
 // Adding the event listener to the script so the alert task can occur.
 	$('table').on("click", clickme);
 };
-//Calling the initialize function when the document has loaded
+
+// Defining the callback function in order to use the retrieved data from
+// the jQuery AJAX method.
+function debugCallback(mydata){
+	console.log(mydata);
+	$(mydiv).append('<br>GeoJSON data:</br>' + JSON.stringify(mydata));
+};
+
+function jQueryAjax(){
+// Defining a variable to hold the data
+	var mydata;
+// Using the basic jQuery AJAX method to
+	$.ajax("data/MegaCities.geojson", {
+		dataType: "json",
+		success: function(mydata){
+// Passing the data through a callback function so that the data can be used
+// for future use.
+			debugCallback(mydata);
+
+// Checking the data to determine if the data has been passed through
+			console.log(mydata);
+		}
+	});
+// Checking the data to determine if the data has been passed through
+	console.log(mydata);
+};
+
 $(document).ready(initialize);
